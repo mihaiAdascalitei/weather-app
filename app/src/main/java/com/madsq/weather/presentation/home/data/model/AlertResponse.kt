@@ -7,6 +7,7 @@ import java.io.Serializable
  * Created by mihai.adascalitei on 25.10.2022.
  */
 
+//default retrofit response handling
 data class AlertResponse(
     @SerializedName("type") val type: String? = null,
     @SerializedName("title") val title: String? = null,

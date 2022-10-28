@@ -8,7 +8,7 @@ package com.madsq.weather.network
 
 import retrofit2.Response
 
-suspend fun <T : Any> apiCall(
+suspend fun <T : Any> apiCall( //call to help with the request interpretation from scratch
     call: suspend () -> Response<T>
 ): Result<T> =
     try {

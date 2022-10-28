@@ -19,11 +19,11 @@ class HomeViewModel : ViewModel() {
 
     private val homeRepo by lazy { provideHomeRepository() }
 
-    private val _alertsUiState = MutableSharedFlow<AlertsUiState>()
+    private val _alertsUiState = MutableSharedFlow<AlertsUiState>(replay = 1)
     val alertsUiState: SharedFlow<AlertsUiState> = _alertsUiState.asSharedFlow()
 
     private val picturesBatch =
-        mutableMapOf<Int, Boolean>() //item index and if it was already executed
+        mutableMapOf<Int, Boolean>() // int : position, boolean : if position was already handled
     private var items = mutableListOf<HomeAlertItem>()
     private var isFetchingPics = false
 
@@ -42,7 +42,10 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun getPicsForRange(firstPosition: Int, lastPosition: Int) {
+    fun getPicsForRange(
+        firstPosition: Int,
+        lastPosition: Int
+    ) { // I request pictures ONLY  for the visible items
         if (isFetchingPics.not()) {
             (firstPosition..lastPosition).forEach {
                 if (picturesBatch.contains(it).not()) {
@@ -57,15 +60,18 @@ class HomeViewModel : ViewModel() {
     private fun getPics() {
         isFetchingPics = true
         viewModelScope.launch {
-            val unfetchedPictures = picturesBatch.count { it.value.not() }
+            val unfetchedPictures =
+                picturesBatch.count { it.value.not() } // check only unhandled positions
             homeRepo.getPics(unfetchedPictures).also { pictures ->
                 isFetchingPics = false
                 var index = 0
 
-                picturesBatch.filter { it.value.not() }.forEach { (key, value) ->
-                    items[key] = items[key].copy(imageUrl = pictures.getOrNull(index++).orEmpty())
-                    picturesBatch[key] = true
-                }
+                picturesBatch.filter { it.value.not() }
+                    .forEach { (key, value) -> //update items with urls, diffutils will do the magic
+                        items[key] =
+                            items[key].copy(imageUrl = pictures.getOrNull(index++).orEmpty())
+                        picturesBatch[key] = true
+                    }
 
                 _alertsUiState.emit(AlertsUiState.Success(items))
             }

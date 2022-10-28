@@ -9,6 +9,7 @@ import com.madsq.weather.presentation.home.data.model.HomePayloads
  * Created by mihai.adascalitei on 25.10.2022.
  */
 
+//used diffutils for better adapter updates handling
 class HomeDiffCallback(
     private val oldList: List<HomeAlertItem>,
     private val newList: List<HomeAlertItem>
@@ -26,6 +27,7 @@ class HomeDiffCallback(
         oldItem.id == newItem.id && oldItem.imageUrl == newItem.imageUrl
     }
 
+    //used payloads to only update the picture (if we got one) not the whole item
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? = run {
         val oldItem = oldList[oldItemPosition]
         val newItem = newList[newItemPosition]

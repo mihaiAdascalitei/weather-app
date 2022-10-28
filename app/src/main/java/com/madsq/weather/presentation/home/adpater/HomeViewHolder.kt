@@ -19,7 +19,7 @@ class HomeViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: HomeAlertItem, payloads: MutableList<Any>) {
-        if (payloads.isEmpty()) {
+        if (payloads.isEmpty()) { //payloads to update only partial changes
             binding.tvName.text = item.areaDesc
             binding.tvEvent.text = item.event
             binding.tvSeverity.apply {

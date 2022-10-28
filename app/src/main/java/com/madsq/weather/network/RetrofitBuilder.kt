@@ -13,7 +13,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
  */
 
 class RetrofitBuilder {
-
+    //default retrofit class with basic interceptors and converters
     private val loginInterceptor: HttpLoggingInterceptor by lazy {
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

@@ -10,7 +10,7 @@ import com.madsq.weather.presentation.home.data.model.HomeAlertItem
 class HomeRepository(
     private val localDs: HomeDataSource,
     private val remoteDs: HomeDataSource
-) : HomeDataSource {
+) : HomeDataSource { //default repo
 
     companion object {
         private var INSTANCE: HomeRepository? = null
@@ -32,16 +32,17 @@ class HomeRepository(
 
     override suspend fun saveAlerts(alerts: List<HomeAlertItem>) = localDs.saveAlerts(alerts)
 
-    override suspend fun getPics(count: Int) = run {
-        val currentPics = mutableListOf<String>()
-        while (currentPics.size < count) {
-            remoteDs.getPics(count).also { urls ->
-                if (uniquePictures.any { it == urls[0] }.not()) {
-                    currentPics += urls
+    override suspend fun getPics(count: Int) =
+        run { //handle the request of pictures here, I can check them if they're unique;
+            val currentPics = mutableListOf<String>()
+            while (currentPics.size < count) {
+                remoteDs.getPics(count).also { urls ->
+                    if (uniquePictures.any { it == urls[0] }.not()) {
+                        currentPics += urls
+                    }
                 }
             }
+            uniquePictures += currentPics
+            currentPics
         }
-        uniquePictures += currentPics
-        currentPics
-    }
 }

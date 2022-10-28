@@ -27,6 +27,7 @@ class HomeRemoteDataSource(
         }
     }
 
+    // network call followed by the mapper (if the case)
     override suspend fun getAlerts(params: Map<String, String>) = apiCall {
         apiService.getAlerts(params)
     }.map { HomeAlertItem.createAll(it) }.orEmpty()

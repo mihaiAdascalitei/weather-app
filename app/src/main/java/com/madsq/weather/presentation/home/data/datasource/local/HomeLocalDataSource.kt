@@ -6,7 +6,7 @@ import com.madsq.weather.presentation.home.data.model.HomeAlertItem
 /**
  * Created by mihai.adascalitei on 25.10.2022.
  */
-
+//did not have time for this - I would've liked to save some local alerts to create a cache for offline usage even for better UX
 class HomeLocalDataSource : HomeDataSource {
 
     companion object {

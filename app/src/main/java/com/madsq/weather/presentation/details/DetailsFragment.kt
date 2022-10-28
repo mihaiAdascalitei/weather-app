@@ -119,20 +119,20 @@ class DetailsFragment : Fragment() {
         calculateOriginalViewPosition()
 
         val dragListener = View.OnTouchListener { view, motionEvent ->
-            if (motionEvent.action == MotionEvent.ACTION_MOVE) {
+            if (motionEvent.action == MotionEvent.ACTION_MOVE) { //find the movement action and set new coordinates for the view on the screen
                 view.y = motionEvent.rawY - view.height / 2
                 view.x = motionEvent.rawX - view.width / 2
             }
             true
         }
-        binding.ivImage.setOnLongClickListener {
+        binding.ivImage.setOnLongClickListener { // init dragging feature
             binding.cvImageDraggable.isVisible = true
             binding.tvDragging.isVisible = true
             binding.cvImageDraggable.setOnTouchListener(dragListener)
             true
         }
 
-        binding.ivDragCancel.setOnClickListener {
+        binding.ivDragCancel.setOnClickListener {// close dragging feature
             binding.tvDragging.isVisible = false
             binding.cvImageDraggable.isVisible = false
             binding.cvImageDraggable.apply {
@@ -142,7 +142,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun calculateOriginalViewPosition() {
+    private fun calculateOriginalViewPosition() { //calculate initial view position to restore it after dragging feature cancelled
         binding.cvImageDraggable.viewTreeObserver.addOnGlobalLayoutListener {
             if (originalDraggableX == 0f) {
                 originalDraggableX = binding.cvImageDraggable.x

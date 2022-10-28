@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 class DetailsViewModel(private val alertItem: HomeAlertItem) : ViewModel() {
 
     private val repo: DetailsDataSource = provideDetailsRepository()
-    private val _zonesUiState = MutableSharedFlow<ZonesUiState>()
+    private val _zonesUiState = MutableSharedFlow<ZonesUiState>(replay = 1)
     val zonesUiState: SharedFlow<ZonesUiState> = _zonesUiState.asSharedFlow()
 
     init {
@@ -32,7 +32,7 @@ class DetailsViewModel(private val alertItem: HomeAlertItem) : ViewModel() {
         viewModelScope.launch {
             alertItem.affectedZones.map {
                 async { repo.getAffectedZone(it) }
-            }.awaitAll().also {
+            }.awaitAll().also { //requesting them in parallel
                 _zonesUiState.emit(ZonesUiState.Success(it))
             }
         }

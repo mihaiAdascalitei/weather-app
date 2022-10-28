@@ -6,7 +6,7 @@ import com.madsq.weather.presentation.home.data.model.HomeAlertItem
  * Created by mihai.adascalitei on 25.10.2022.
  */
 
-interface HomeDataSource {
+interface HomeDataSource { //default cleancode datasource
 
     suspend fun getAlerts(params: Map<String, String>): List<HomeAlertItem>
     suspend fun saveAlerts(alerts: List<HomeAlertItem>)

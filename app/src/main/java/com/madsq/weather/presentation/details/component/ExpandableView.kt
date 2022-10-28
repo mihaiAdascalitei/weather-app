@@ -19,9 +19,6 @@ class ExpandableView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    companion object {
-    }
-
     private val binding = ExpandableViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun bind(item: ExpandableItem) {

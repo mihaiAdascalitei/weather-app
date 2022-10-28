@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
 
     private val _scrollListener = object : RecyclerView.OnScrollListener() {
         fun RecyclerView.getRangeUpdates() {
-            (layoutManager as? LinearLayoutManager)?.let { layManager ->
+            (layoutManager as? LinearLayoutManager)?.let { layManager -> //request for only the visible items
                 val firstPosition = layManager.findFirstVisibleItemPosition()
                 val lastPosition = layManager.findLastVisibleItemPosition()
                 viewModel.getPicsForRange(firstPosition, lastPosition)
@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-            if (dx == 0 && dy == 0) {
+            if (dx == 0 && dy == 0) {//need to check the first time updates
                 recyclerView.getRangeUpdates()
             }
         }

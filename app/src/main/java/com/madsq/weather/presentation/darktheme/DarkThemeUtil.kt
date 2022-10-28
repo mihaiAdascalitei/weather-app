@@ -20,12 +20,14 @@ object DarkThemeUtil {
         AppCompatDelegate.setDefaultNightMode(darkThemeMode)
     }
 
+    //get default dark theme mode, if not save we put -1 (default for system)
     var darkThemeMode: Int
         get() = sharedPref.getInt(DarkThemeModeKey, -1)
         set(value) {
             sharedPref.edit { putInt(DarkThemeModeKey, value) }
         }
 
+    //update dark theme and also apply changes
     fun updateDarkThemeMode(mode: Int) {
         darkThemeMode = mode
         AppCompatDelegate.setDefaultNightMode(darkThemeMode)
