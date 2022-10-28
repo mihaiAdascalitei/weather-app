@@ -22,4 +22,6 @@
     <string name="affected_zones">Affected zones</string>
     <string name="magic_text">Magic text</string>
     <string name="compute">Compute</string>
+    <string name="magic_text_example">\put @bold@ or $italic text$ here, maybe nothing #see me#</string>
+    <string name="magic_text_hint">This is a hint, you saw how it works :)</string>
 </resources>

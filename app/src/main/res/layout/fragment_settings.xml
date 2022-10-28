@@ -52,10 +52,11 @@
         android:layout_height="100dp"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_corners_rectangle"
-        android:hint="text"
+        android:hint="@string/magic_text_hint"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:padding="4dp"
+        android:text="@string/magic_text_example"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_text_magic" />
