@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.madsq.weather.databinding.FragmentSettingsBinding
 import com.madsq.weather.presentation.darktheme.DarkThemeSelectionDialogFragment
+import com.madsq.weather.presentation.settings.utils.computeMagicText
 import com.madsq.weather.presentation.settings.utils.hideKeyboard
 
 
@@ -52,9 +53,9 @@ class SettingsFragment : Fragment() {
 
     private fun computeMagicText() {
         binding.etMagicText.text.toString().takeIf { it.isNotEmpty() }?.let { currentText ->
-
+            val computedText = currentText.computeMagicText()
             binding.tvMagicTextResult.apply {
-                text = currentText
+                text = computedText
                 isVisible = true
             }
         }
