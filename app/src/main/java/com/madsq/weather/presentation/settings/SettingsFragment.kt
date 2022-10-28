@@ -10,6 +10,7 @@ import com.madsq.weather.databinding.FragmentSettingsBinding
 import com.madsq.weather.presentation.darktheme.DarkThemeSelectionDialogFragment
 import com.madsq.weather.presentation.settings.utils.computeMagicText
 import com.madsq.weather.presentation.settings.utils.hideKeyboard
+import com.madsq.weather.presentation.x_others.testRentals
 
 
 /**
@@ -31,6 +32,8 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        testRentals()
+
         binding.tvDarkMode.setOnClickListener {
             DarkThemeSelectionDialogFragment.newInstance().show(childFragmentManager)
         }

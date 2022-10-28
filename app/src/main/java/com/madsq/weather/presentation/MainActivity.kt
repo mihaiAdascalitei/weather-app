@@ -7,6 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.madsq.weather.R
 import com.madsq.weather.databinding.ActivityMainBinding
+import com.madsq.weather.presentation.x_others.testRentals
 
 
 /**
