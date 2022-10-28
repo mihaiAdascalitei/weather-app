@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Weather-Mocha</string>
+    <string name="by">By %s</string>
+    <string name="generic_fetch_issue">It seems we walked into a problem… no data available</string>
+    <string name="retry">Retry</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="starts">Starts: %s</string>
+    <string name="ends">Ends: %s</string>
+    <string name="details">Details</string>
+    <string name="period">Period</string>
+    <string name="severity">Severity</string>
+    <string name="certainty">Certainty</string>
+    <string name="urgency">Urgency</string>
+    <string name="description">Description</string>
+    <string name="instructions">Instructions</string>
+    <string name="dragging_image">Dragging image</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="affected_zones">Affected zones</string>
+    <string name="magic_text">Magic text</string>
+    <string name="compute">Compute</string>
+</resources>

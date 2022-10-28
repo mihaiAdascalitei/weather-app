@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#212121</color>
+    <color name="widget">#424242</color>
+    <color name="primary">#2286c3</color>
+    <color name="text">#fff</color>
+    <color name="icon">#fff</color>
+    <color name="overlay">#73000000</color>
+
+    <color name="pure_white">#fff</color>
+    <color name="pure_black">#000</color>
+
+    <color name="misc_red">#bf360c</color>
+    <color name="misc_green">#00c853</color>
+    <color name="misc_yellow">#fdd835</color>
+</resources>

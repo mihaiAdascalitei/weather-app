@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph.xml"
+    app:startDestination="@id/home_navigation">
+
+    <fragment
+        android:id="@+id/home_navigation"
+        android:name="com.madsq.weather.presentation.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/details_navigation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_navigation"
+        android:name="com.madsq.weather.presentation.details.DetailsFragment">
+        <argument
+            android:name="item"
+            app:argType="com.madsq.weather.presentation.home.data.model.HomeAlertItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings_navigation"
+        android:name="com.madsq.weather.presentation.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
